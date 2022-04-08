@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://cm2k28yijdl03"]
+
+[ext_resource type="Script" path="res://map/chest.gd" id="1_n823l"]
+[ext_resource type="Texture2D" uid="uid://b756e7epi7kfp" path="res://assets/Solaria Demo Pack Update 01/Tilesets/Solaria Demo Update 01 32.png" id="1_ry37t"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uvjra"]
+size = Vector2(30, 32)
+
+[node name="Chest" type="StaticBody2D"]
+script = ExtResource( "1_n823l" )
+
+[node name="ClosedChest" type="Sprite2D" parent="."]
+texture = ExtResource( "1_ry37t" )
+region_enabled = true
+region_rect = Rect2(192, 256, 32, 33)
+
+[node name="OpenChest" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource( "1_ry37t" )
+region_enabled = true
+region_rect = Rect2(192, 288, 32, 32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( "RectangleShape2D_uvjra" )

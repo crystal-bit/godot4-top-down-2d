@@ -1,0 +1,63 @@
+[gd_scene load_steps=10 format=3]
+
+[ext_resource type="Script" path="res://enemy/enemy.gd" id="1_5jwht"]
+[ext_resource type="Texture2D" uid="uid://cei43k0ha2tcy" path="res://assets/Solaria Demo Pack Update 01/Sprites/Slime 01 32.png" id="2_8bphx"]
+[ext_resource type="Script" path="res://enemy/ai.gd" id="3_3kt2j"]
+[ext_resource type="Script" path="res://enemy/enemy-hitbox.gd" id="4_h1fnb"]
+[ext_resource type="AudioStream" uid="uid://0q4375a64g84" path="res://assets/sfx/enemyhit.wav" id="5_4njjv"]
+[ext_resource type="AudioStream" uid="uid://pj126wqqqvj7" path="res://assets/sfx/enemy-defeated.wav" id="5_alife"]
+[ext_resource type="PackedScene" uid="uid://bhn5n0yo76t00" path="res://player/flash-effect.tscn" id="7_5me48"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w65ar"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f05ak"]
+
+[node name="Enemy" type="CharacterBody2D" groups=["enemies"]]
+motion_mode = 1
+script = ExtResource( "1_5jwht" )
+
+[node name="MovementCollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource( "RectangleShape2D_w65ar" )
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource( "2_8bphx" )
+region_enabled = true
+region_rect = Rect2(0, 0, 32, 32)
+
+[node name="AI" type="Node2D" parent="."]
+script = ExtResource( "3_3kt2j" )
+movement_speed = 60
+
+[node name="Timer" type="Timer" parent="AI"]
+
+[node name="Hurtbox" type="Area2D" parent="."]
+visible = false
+collision_layer = 8
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource( "RectangleShape2D_f05ak" )
+
+[node name="EnemyHitbox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource( "4_h1fnb" )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyHitbox"]
+shape = SubResource( "RectangleShape2D_f05ak" )
+
+[node name="HitSfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( "5_4njjv" )
+volume_db = 6.0
+pitch_scale = 1.5
+
+[node name="DefeatedSfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( "5_alife" )
+volume_db = 6.0
+
+[node name="FlashEffect" parent="." instance=ExtResource( "7_5me48" )]
+
+[connection signal="timeout" from="AI/Timer" to="AI" method="_on_timer_timeout"]
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
+[connection signal="hit" from="EnemyHitbox" to="." method="_on_enemy_hitbox_hit"]

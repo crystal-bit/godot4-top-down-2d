@@ -1,0 +1,16 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bsw5d8a01xdxv"
+path="res://.godot/imported/04-all-of-us-eircskiff.mp3-4cb021a59ea4adc5e9cb22f96856925a.mp3str"
+
+[deps]
+
+source_file="res://assets/music/04-all-of-us-eircskiff.mp3"
+dest_files=["res://.godot/imported/04-all-of-us-eircskiff.mp3-4cb021a59ea4adc5e9cb22f96856925a.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0
