@@ -59,6 +59,12 @@ func _physics_process(delta):
 		"knocking_back":
 			move_and_slide()
 		"idle":
+			# check object interactions
+			if raycast.is_colliding():
+				var collider = raycast.get_collider()
+				if collider is Chest:
+					if Input.is_action_just_pressed("player_a_btn"):
+						return open_chest(collider)
 			# Get the input direction and handle the movement/deceleration.
 			# TODO: as good practice, you should replace UI actions with custom gameplay actions.
 			var direction = Vector2(Input.get_axis("ui_left", "ui_right"), Input.get_axis("ui_up", "ui_down")).normalized()
@@ -85,15 +91,9 @@ func _physics_process(delta):
 			else:
 				if velocity == Vector2() and not ("idle" in animated_sprite.animation):
 					animated_sprite.play("idle_" + direction_as_string())
-			if Input.is_action_just_pressed("player_attack"):
+			if Input.is_action_just_pressed("player_a_btn"):
 				if has_sword:
 					attack()
-			# check object interactions
-			if raycast.is_colliding():
-				var collider = raycast.get_collider()
-				if collider is Chest:
-					if Input.is_action_just_pressed("player_interact"):
-						open_chest(collider)
 		"attacking":
 			return
 		_:
@@ -139,6 +139,5 @@ func on_state_changed(new_state, prev_state):
 
 
 func _on_chest_chest_opened(item):
-	print(item)
 	if item == "sword":
 		has_sword = true

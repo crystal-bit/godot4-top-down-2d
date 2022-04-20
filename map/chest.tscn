@@ -21,4 +21,5 @@ region_enabled = true
 region_rect = Rect2(192, 288, 32, 32)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource( "RectangleShape2D_uvjra" )

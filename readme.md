@@ -1,8 +1,8 @@
 # Godot 4 top-down 2D
 
-Status: WIP  
-Genre: Top Down 2D game, Zelda inspired  
-Made with Godot 4 alpha 6  
+**Status**: WIP  
+**Genre**: Top Down 2D game, Zelda inspired  
+Made with Godot 4 alpha6  
 
 ![](https://i.imgur.com/uRn549P.png)
 

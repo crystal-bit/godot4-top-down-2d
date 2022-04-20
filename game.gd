@@ -1,9 +1,17 @@
 extends Node2D
 
+@onready var player := $Player
+@onready var dialogues = $GUI/Dialogues
 
 func _ready():
 	var window: Window = get_tree().root
 	var game_size = window.content_scale_size
+
+	for chest in get_tree().get_nodes_in_group("chests"):
+		chest.connect("chest_opened",
+			func(item_name):
+				dialogues.start_dialogue("Item {0} obtained".format([item_name]))
+				)
 
 
 func _input(event):
@@ -30,3 +38,14 @@ func gameover():
 	music_fadeout.tween_property($Music, "volume_db", $Music.volume_db - 16, .7)
 	music_fadeout.tween_property($Music, "pitch_scale", $Music.pitch_scale - .2, 3)
 	# TODO: show gameover screen
+
+
+func _on_dialogues_dialogue_started():
+	player.state = "idle"
+	player.set_physics_process(false)
+
+
+func _on_dialogues_dialogue_ended():
+	player.state = "idle"
+	await get_tree().process_frame
+	player.set_physics_process(true)
