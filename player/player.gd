@@ -138,6 +138,6 @@ func on_state_changed(new_state, prev_state):
 			pass
 
 
-func _on_chest_chest_opened(item):
+func handle_item_received(item):
 	if item == "sword":
 		has_sword = true

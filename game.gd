@@ -11,6 +11,7 @@ func _ready():
 		chest.connect("chest_opened",
 			func(item_name):
 				dialogues.start_dialogue("Item {0} obtained".format([item_name]))
+				player.handle_item_received(item_name)
 				)
 
 
