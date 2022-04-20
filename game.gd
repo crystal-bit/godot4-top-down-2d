@@ -38,6 +38,7 @@ func gameover():
 	var music_fadeout = get_tree().create_tween()
 	music_fadeout.tween_property($Music, "volume_db", $Music.volume_db - 16, .7)
 	music_fadeout.tween_property($Music, "pitch_scale", $Music.pitch_scale - .2, 3)
+	$GameOverLayer.show()
 	# TODO: show gameover screen
 
 

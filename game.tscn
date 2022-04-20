@@ -4392,10 +4392,21 @@ one_shot = true
 script = ExtResource( "21_p7x2v" )
 
 [node name="ColorRect" type="ColorRect" parent="GameOverLayer"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color(0.227451, 0.121569, 0.133333, 0.843137)
+
+[node name="CenterContainer" type="CenterContainer" parent="GameOverLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Label" type="Label" parent="GameOverLayer/CenterContainer"]
+offset_left = 258.0
+offset_top = 214.0
+offset_right = 382.0
+offset_bottom = 266.0
+text = "GAME OVER
+Rress R to retry!"
 
 [node name="Zelda-text-box" type="Sprite2D" parent="."]
 visible = false
