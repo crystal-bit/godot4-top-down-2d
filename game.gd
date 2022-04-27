@@ -3,10 +3,8 @@ extends Node2D
 @onready var player := $Player
 @onready var dialogues = $GUI/Dialogues
 
-func _ready():
-	var window: Window = get_tree().root
-	var game_size = window.content_scale_size
 
+func _ready():
 	for chest in get_tree().get_nodes_in_group("chests"):
 		chest.connect("chest_opened",
 			func(item_name):
@@ -39,7 +37,6 @@ func gameover():
 	music_fadeout.tween_property($Music, "volume_db", $Music.volume_db - 16, .7)
 	music_fadeout.tween_property($Music, "pitch_scale", $Music.pitch_scale - .2, 3)
 	$GameOverLayer.show()
-	# TODO: show gameover screen
 
 
 func _on_dialogues_dialogue_started():

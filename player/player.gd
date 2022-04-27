@@ -141,3 +141,5 @@ func on_state_changed(new_state, prev_state):
 func handle_item_received(item):
 	if item == "sword":
 		has_sword = true
+	else:
+		print(item + " not supported.")
