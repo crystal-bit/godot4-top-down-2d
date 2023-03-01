@@ -25,7 +25,7 @@ func set_text(val: String):
 	displaying_text = val
 	label.text = val
 	last_page = is_last_page()
-	label.percent_visible = 0.0
+	label.visible_ratio = 0.0
 	$TextTimer.start()
 
 
@@ -35,9 +35,9 @@ func next_page():
 
 
 func is_last_page():
-	var tmp = label.percent_visible
+	var tmp = label.visible_ratio
 	label.text = displaying_text
-	label.percent_visible = 1.0
+	label.visible_ratio = 1.0
 	var is_last_page = label.get_line_count() <= 2
 	return is_last_page
 

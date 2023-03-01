@@ -1,7 +1,7 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
+type="AudioStreamWAV"
 uid="uid://kgbk7qiha5vc"
 path="res://.godot/imported/gameover.wav-8f89145833902a50c57cfa08bbea3db4.sample"
 

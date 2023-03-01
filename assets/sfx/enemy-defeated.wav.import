@@ -1,7 +1,7 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
+type="AudioStreamWAV"
 uid="uid://pj126wqqqvj7"
 path="res://.godot/imported/enemy-defeated.wav-10fc1ee1c82aee9832c6f29d76791d28.sample"
 
